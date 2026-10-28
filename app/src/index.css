@@ -1,0 +1,203 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 5.9% 10%;
+    --radius: 0.625rem;
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Radix Dialog animation fixes */
+[data-state="closed"] {
+  animation: none !important;
+}
+
+[data-state="closed"]::backdrop {
+  animation: none !important;
+}
+
+/* Keep only enter animation, disable exit animation */
+[data-state="open"] {
+  animation-duration: 200ms;
+}
+
+[data-state="open"]::backdrop {
+  animation-duration: 200ms;
+}
+
+/* Light mode overrides for hardcoded dark classes */
+:root:not(.dark) {
+  /* Main container backgrounds */
+  --light-bg-primary: rgb(248 250 252);
+  --light-bg-secondary: rgb(241 245 249);
+  --light-bg-tertiary: rgb(226 232 240);
+  --light-text-primary: rgb(15 23 42);
+  --light-text-secondary: rgb(51 65 85);
+  --light-text-tertiary: rgb(100 116 139);
+  --light-border: rgb(203 213 225);
+}
+
+/* Override hardcoded dark slate colors in light mode */
+:root:not(.dark) .min-h-screen.bg-gradient-to-br {
+  @apply !bg-gradient-to-br !from-slate-50 !via-slate-100 !to-slate-50 !text-slate-900;
+}
+
+:root:not(.dark) header {
+  @apply !bg-white !border-slate-200;
+}
+
+:root:not(.dark) .bg-slate-900 {
+  @apply !bg-white;
+}
+
+:root:not(.dark) .bg-slate-900\/50 {
+  @apply !bg-slate-50;
+}
+
+:root:not(.dark) .from-slate-900 {
+  @apply !from-slate-50;
+}
+
+:root:not(.dark) .via-slate-800 {
+  @apply !via-slate-100;
+}
+
+:root:not(.dark) .to-slate-900 {
+  @apply !to-slate-50;
+}
+
+:root:not(.dark) .bg-slate-800 {
+  @apply !bg-slate-100;
+}
+
+:root:not(.dark) .bg-slate-800\/50 {
+  @apply !bg-slate-100 !bg-opacity-50;
+}
+
+:root:not(.dark) .bg-slate-800\/30 {
+  @apply !bg-slate-100 !bg-opacity-30;
+}
+
+:root:not(.dark) .bg-slate-800\/70 {
+  @apply !bg-slate-100 !bg-opacity-70;
+}
+
+:root:not(.dark) .border-slate-700 {
+  @apply !border-slate-200;
+}
+
+:root:not(.dark) .border-slate-700\/50 {
+  @apply !border-slate-200;
+}
+
+:root:not(.dark) .border-slate-700\/30 {
+  @apply !border-slate-100;
+}
+
+:root:not(.dark) .border-slate-600 {
+  @apply !border-slate-300;
+}
+
+:root:not(.dark) .text-white {
+  @apply !text-slate-900;
+}
+
+:root:not(.dark) .text-slate-400 {
+  @apply !text-slate-600;
+}
+
+:root:not(.dark) .text-slate-500 {
+  @apply !text-slate-700;
+}
+
+:root:not(.dark) .text-slate-300 {
+  @apply !text-slate-700;
+}
+
+/* Hover states for light mode - use standard CSS */
+:root:not(.dark) .hover\:text-white:hover {
+  color: rgb(15 23 42) !important;
+}
+
+:root:not(.dark) .hover\:bg-slate-700:hover {
+  background-color: rgb(226 232 240) !important;
+}
+
+:root:not(.dark) .hover\:bg-slate-800\/70:hover {
+  background-color: rgba(241, 245, 249, 1) !important;
+}
+
+:root:not(.dark) .hover\:border-slate-500:hover {
+  border-color: rgb(148 163 184) !important;
+}
+
+:root:not(.dark) .placeholder-slate-500::placeholder {
+  color: rgb(100 116 139) !important;
+}
